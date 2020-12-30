@@ -1,4 +1,4 @@
-import { DashBoard, DashBoardTitle } from "./style/style";
+import { DashBoard, DashBoardTitle } from './style/style';
 
 const History = ({ history, returnBtn }) => (
   <DashBoard $right="-150px">

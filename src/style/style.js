@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { WHITE_CHESS, BLACK_CHESS, CHESS_SHADOW } from "./constants";
+import styled from 'styled-components';
+import { WHITE_CHESS, BLACK_CHESS, CHESS_SHADOW } from './constants';
+
+export const BoardImg = styled.img`
+  display: block;
+  width: 860px;
+`;
 
 export const BoardContainer = styled.div`
   position: relative;
   display: block;
   width: 1000px;
   margin: 0 400px;
-`;
-
-export const BoardImg = styled.img`
-  display: block;
-  width: 860px;
 `;
 
 export const Square = styled.div`
@@ -22,10 +22,10 @@ export const Square = styled.div`
   border-radius: 50%;
   cursor: pointer;
   background: ${(props) => {
-    if (props.$color === "none") return "transparent";
-    return props.$color === "black" ? BLACK_CHESS : WHITE_CHESS;
+    if (props.$color === 'none') return 'transparent';
+    return props.$color === 'black' ? BLACK_CHESS : WHITE_CHESS;
   }};
-  box-shadow: ${(props) => (props.$color === "none" ? "none" : CHESS_SHADOW)};
+  box-shadow: ${(props) => (props.$color === 'none' ? 'none' : CHESS_SHADOW)};
 `;
 
 export const TitleWrapper = styled.div`
@@ -62,7 +62,7 @@ export const Player = styled.span`
   height: 26px;
   border-radius: 50%;
   background: ${(props) =>
-    props.$player === "black" ? BLACK_CHESS : WHITE_CHESS};
+    props.$player === 'black' ? BLACK_CHESS : WHITE_CHESS};
   box-shadow: ${CHESS_SHADOW};
   transform: translate(10px, 4px);
 `;

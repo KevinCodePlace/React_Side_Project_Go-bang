@@ -1,17 +1,18 @@
-import { BoardImg, Square, BoardContainer } from "./style/style";
-import boardImg from "./image/board.webp";
-import { useState, useEffect } from "react";
-import Title from "./Title";
-import History from "./History";
-import ChessPlaybook from "./ChessPlaybook";
-import { initBoard, initHistory } from "./utils/utils";
+import { BoardImg, Square, BoardContainer } from './style/style';
+import boardImg from './image/board.webp';
+import { useState, useEffect } from 'react';
+import Title from './Title';
+import History from './History';
+import ChessPlaybook from './ChessPlaybook';
+import { initBoard, initHistory } from './utils/utils';
 
 const App = () => {
+  // initBoard 有點貴，這裡使用 Lazy initial state 避免之後 re-render 執行 initBoard
   const [board, setBoard] = useState(() => initBoard());
-  const [player, setPlayer] = useState("black");
+  const [player, setPlayer] = useState('black');
   const [lastPlace, setLastPlace] = useState([]);
-  const [winner, setWinner] = useState("");
-
+  const [winner, setWinner] = useState('');
+  // 順手加上 lazy initial state 好了
   const [history, setHistory] = useState(() => initHistory());
 
   useEffect(() => {
@@ -21,20 +22,20 @@ const App = () => {
   const handleMatchResult = () => {
     if (lastPlace.length === 0) return;
     const lastColor = board[lastPlace[0]][lastPlace[1]].chess;
-    const directions = [
-      { index: [1, 0], line: "horizontal" },
-      { index: [1, -1], line: "slash" },
-      { index: [0, -1], line: "vertical" },
-      { index: [-1, -1], line: "backSlash" },
-      { index: [-1, 0], line: "horizontal" },
-      { index: [-1, 1], line: "slash" },
-      { index: [0, 1], line: "vertical" },
-      { index: [1, 1], line: "backSlash" },
+    const diretions = [
+      { index: [1, 0], line: 'horizontal' },
+      { index: [1, -1], line: 'slash' },
+      { index: [0, -1], line: 'vertical' },
+      { index: [-1, -1], line: 'backSlash' },
+      { index: [-1, 0], line: 'horizontal' },
+      { index: [-1, 1], line: 'slash' },
+      { index: [0, 1], line: 'vertical' },
+      { index: [1, 1], line: 'backSlash' },
     ];
     const result = { horizontal: 1, vertical: 1, slash: 1, backSlash: 1 };
-    directions.forEach((direction) => {
-      const [dx, dy] = direction.index;
-      const line = direction.line;
+    diretions.forEach((diretion) => {
+      const [dx, dy] = diretion.index;
+      const line = diretion.line;
       let [nowX, nowY] = lastPlace;
       let [nextX, nextY] = [nowX + dx, nowY + dy];
       if (nextX < 0 || nextX > 18 || nextY < 0 || nextY > 18) return;
@@ -88,14 +89,14 @@ const App = () => {
       },
     ]);
     setBoard(nextBoard);
-    setPlayer(player === "black" ? "white" : "black");
+    setPlayer(player === 'black' ? 'white' : 'black');
   };
 
   const handleRestartMatch = () => {
     setBoard(initBoard());
-    setPlayer("black");
+    setPlayer('black');
     setLastPlace([]);
-    setWinner("");
+    setWinner('');
     setHistory(initHistory());
   };
 
