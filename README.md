@@ -7,7 +7,7 @@
 
 Demo
 -------------
-[連結](https://kevincodeplace.github.io/gobang/)
+[連結](https://kevincodeplace.github.io/go-bang/)
 
 功能
 -------------
