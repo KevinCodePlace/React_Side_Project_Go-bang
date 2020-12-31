@@ -10,7 +10,6 @@ export const BoardContainer = styled.div`
   position: relative;
   display: block;
   width: 1000px;
-  margin: 0 140px;
 `;
 
 export const Square = styled.div`
